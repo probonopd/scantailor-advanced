@@ -12,6 +12,7 @@ install:
   - source /opt/qt*/bin/qt*-env.sh
 
 script:
+  - sed -i -e 's|Boost 1.60|Boost 1.50|g' CMakeLists.txt
   - cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   - make -j$(nproc)
   - make DESTDIR=appdir -j$(nproc) install ; find appdir/
