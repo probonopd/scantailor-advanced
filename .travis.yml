@@ -3,8 +3,13 @@ compiler: gcc
 sudo: require
 dist: trusty
 
+before_install:
+  - sudo add-apt-repository ppa:beineri/opt-qt593-trusty -y
+  - sudo apt-get update -qq
+
 install:
-  - sudo apt-get -y install qt4-dev-tools libjpeg-dev zlib1g-dev libpng-dev libtiff-dev libboost-all-dev libxrender-dev
+  - sudo apt-get -y install qt59base libjpeg-dev zlib1g-dev libpng-dev libtiff-dev libboost-all-dev libxrender-dev
+  - source /opt/qt*/bin/qt*-env.sh
 
 script:
   - cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
